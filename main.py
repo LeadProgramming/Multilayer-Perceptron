@@ -42,8 +42,8 @@ class ANN(object):
         self.n_hidden = layers[1]
         self.n_output = layers[2]
         #used to adjust hyperparemeters
-        # self.weights = [list([[ random() for i in range(self.n_input)] for i in range(self.n_hidden)]),
-                        # list([[ random() for i in range(self.n_hidden)] for i in range(self.n_output)])]
+        # self.weights = [list([[ uniform(-0.1,0.1) for i in range(self.n_input)] for i in range(self.n_hidden)]),
+        #                 list([[ uniform(-0.1,0.1) for i in range(self.n_hidden)] for i in range(self.n_output)])]
         self.weights = [list([[0.05,-0.03,0.02,-0.01,0.05,0.01,0.02,0.08,-0.01,0.03],
                               [0.01,-0.02,-0.02,0.09,-0.03,0.02,0.06,0.05,0.06,0.04],
                               [-0.02,-0.08,-0.02,0.09,-0.03,0.06,0.06,0.03,-0.04,0.08],
@@ -183,7 +183,7 @@ if __name__ == "__main__":
     """ Hyperparameter
     Input Layer: 10 inputs
     Hidden Layer #1: 10 sigmoid neurons
-    Output Layer: 8 output sigmoid neurons
+    Output Layer: 8 output softmax neurons
     """
     net = ANN([10,10,8])
 
