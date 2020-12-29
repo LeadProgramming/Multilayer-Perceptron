@@ -64,7 +64,7 @@ Note: It would be useful if you store the activated values in somewhere in your 
 
 The classified set has eight possible classes which means that the random variable has a multinomial distribution. Thus, the activation function of the **output** layer uses a **SoftMax** regression.
 
-![img](https://latex.codecogs.com/svg.latex?%20h(x)%20=%20\begin{bmatrix}%20P(y%20=%201%20|%20x;%20w)%20\\%20P(y%20=%202%20|%20x;%20w)%20\\\vdots%20\\P(y%20=%20K%20|%20x;%20w)\end{bmatrix}=\frac{1}{%20\sum_{j=1}^{K}{\exp(w^{(j)\top}%20x%20}}\begin{bmatrix}\exp(w^{(1)\top}%20x%20%20\\\exp(w^{(2)\top}%20x%20 %20\\\vdots%20\\\exp(w^{(K)\top}%20x%20%20\\\end{bmatrix)
+![img](https://latex.codecogs.com/svg.latex?%20h(x)%20=%20\begin{bmatrix}%20P(y%20=%201%20|%20x;%20w)%20\\%20P(y%20=%202%20|%20x;%20w)%20\\\vdots%20\\P(y%20=%20K%20|%20x;%20w)\end{bmatrix}=\frac{1}{%20\sum_{j=1}^{K}{\exp(w^{(j)\top}%20x%20}}\begin{bmatrix}\exp(w^{(1)\top}%20x%20%20\\\exp(w^{(2)\top}%20x%20 %20\\\vdots%20\\\exp(w^{(K)\top}%20x%20%20\\\end{bmatrix})
 
 The result of the SoftMax function gives you a probability distribution for 8 possible classes. From there we select the class with the highest probability. 
 
@@ -72,7 +72,7 @@ Note: Getting the max value's index from the output layer is useful for obtainin
 
 Here is the feed-forward formula which is used for classifying an example.
 
-![img](https://latex.codecogs.com/svg.latex?y_i%20=%20%20f(\sum_j%20w_{ji}f(\sum_k%20w_{kj}x_k))
+![img](https://latex.codecogs.com/svg.latex?y_i%20=%20%20f(\sum_j%20w_{ji}f(\sum_k%20w_{kj}x_k)))
 
 ### 3. Directional Error
 
@@ -149,9 +149,6 @@ For each hidden neuron, every output delta, the corresponding weight, and the le
 For each input, every hidden delta, the corresponding weight, and the learning rate will change the hidden layer weights. Here is the formula to make more sense.
 
 ![img](https://latex.codecogs.com/svg.latex?w_{kj}%20=%20w_{kj}%20+%20\eta\delta_jx_k)
-$$
-w_{kj} = w_{kj} + \eta\delta_jx_k
-$$
 
 ### 6. Training the Network
 
