@@ -53,10 +53,8 @@ classified: 7
 ### 2. Feed-Forward
 
 The hidden and output layer will have its own activation function and requires a transfer function. The transfer function will compute the weighted sums from the weights and input/activated values coming from the transmitting neurons.  Here is our transfer function.
-$$
-\sum_k w_{kj}x_k
-$$
 
+![img](https://latex.codecogs.com/svg.latex?\sum_k%20w_{kj}x_k)
 
 The **hidden layer** uses the **sigmoid function** for the **activation** function. The hidden layer is responsible for independently and linearly determining a class with the given inputs.  The transfer function is our x. 
 
@@ -65,44 +63,24 @@ Note: It would be useful if you store the activated values in somewhere in your 
 ![S(t)= \frac {1}{1+e^{-t}}](https://www.gstatic.com/education/formulas2/-1/en/sigmoid_function.svg)
 
 The classified set has eight possible classes which means that the random variable has a multinomial distribution. Thus, the activation function of the **output** layer uses a **SoftMax** regression.
-$$
-\begin{align}
-h(x) =
-\begin{bmatrix}
-P(y = 1 | x; w) \\
-P(y = 2 | x; w) \\
-\vdots \\
-P(y = K | x; w)
-\end{bmatrix}
-=
-\frac{1}{ \sum_{j=1}^{K}{\exp(w^{(j)\top} x) }}
-\begin{bmatrix}
-\exp(w^{(1)\top} x ) \\
-\exp(w^{(2)\top} x ) \\
-\vdots \\
-\exp(w^{(K)\top} x ) \\
-\end{bmatrix}
-\end{align}
-$$
 
+![img](https://latex.codecogs.com/svg.latex?%20h(x)%20=%20\begin{bmatrix}%20P(y%20=%201%20|%20x;%20w)%20\\%20P(y%20=%202%20|%20x;%20w)%20\\\vdots%20\\P(y%20=%20K%20|%20x;%20w)\end{bmatrix}=\frac{1}{%20\sum_{j=1}^{K}{\exp(w^{(j)\top}%20x%20}}\begin{bmatrix}\exp(w^{(1)\top}%20x%20%20\\\exp(w^{(2)\top}%20x%20 %20\\\vdots%20\\\exp(w^{(K)\top}%20x%20%20\\\end{bmatrix)
 
 The result of the SoftMax function gives you a probability distribution for 8 possible classes. From there we select the class with the highest probability. 
 
 Note: Getting the max value's index from the output layer is useful for obtaining the error rate. Not getting the max is useful for calculating the delta for every output neurons, because were leaving the value as is.
 
 Here is the feed-forward formula which is used for classifying an example.
-$$
-y_i =  f(\sum_j w_{ji}f(\sum_k w_{kj}x_k))
-$$
+
+![img](https://latex.codecogs.com/svg.latex?y_i%20=%20%20f(\sum_j%20w_{ji}f(\sum_k%20w_{kj}x_k))
 
 ### 3. Directional Error
 
 > The neural network can only learn from its mistake. 
 
 The **directional error** tells how bad the neural network is classifying an example. t is our target and y is what the model is classifying. This formula will be useful for gradient descent because it will adjust the weights depending on its performance.
-$$
-(t_i-y_i)
-$$
+
+![img](https://latex.codecogs.com/svg.latex?(t_i-y_i))
 
 ### 4. Gradient Descent
 
@@ -111,9 +89,9 @@ $$
 Since we propagated from the input to the output layer, now we go backwards and calculate the errors (**delta**) for **each** neuron in **every** single layer. For example, if there are eight output neurons, then there will be eight deltas for the output layer. 
 
 Note: Delta can also be negative which can decrease the weight change later on.
-$$
-\delta_i
-$$
+
+![img](https://latex.codecogs.com/svg.latex?\delta_i)
+
 **Output-layer**
 
 We take the non one-hot encoded result from the forward propagation and plug it into this formula.
@@ -149,9 +127,9 @@ $$
 Interestingly, prior to transposing the weight matrix the length of a single row is actually the number of neurons in the hidden layer. This will determine the number of delta we will have for the hidden layer.
 
 Let's not forget that we need to compute the hidden gradient.
-$$
-h_j(1-h_j)
-$$
+
+![img](https://latex.codecogs.com/svg.latex?h_j(1-h_j))
+
 Now, we needed the activated values from the hidden neurons which came from our feed-forward algorithm that you stored somewhere in your code.
 
 We have calculated the deltas for the hidden layer and the output layer.
@@ -163,12 +141,14 @@ Time to change the weights!
 **Output-layer**
 
 For each hidden neuron, every output delta, the corresponding weight, and the learning rate will change the output layer weights. Here is the formula to make more sense.
-$$
-w_{ji} = w_{ji} + \eta\delta_ih_j
-$$
+
+![img](https://latex.codecogs.com/svg.latex?w_{ji}%20=%20w_{ji}%20+%20\eta\delta_ih_j)
+
 **Hidden-layer**
 
 For each input, every hidden delta, the corresponding weight, and the learning rate will change the hidden layer weights. Here is the formula to make more sense.
+
+![img](https://latex.codecogs.com/svg.latex?w_{kj}%20=%20w_{kj}%20+%20\eta\delta_jx_k)
 $$
 w_{kj} = w_{kj} + \eta\delta_jx_k
 $$
@@ -178,18 +158,15 @@ $$
 Now, we want to repeat step 2 to 5 for all training examples which will train our data. After we train the rest of the training data we will have completed one **epoch**. Now we can choose the number of epochs to train our network!
 
 **Annealing Learning Rate** - I found out this pretty neat trick to decrease the step size over a number of epochs. This trick is useful to hyper-jump to the global minimum and skip a bunch of local minimums. 
-$$
-\eta(t) = \eta(0)e^{-at}
-$$
 
-
+![img](https://latex.codecogs.com/svg.latex?\eta(t)%20=%20\eta(0)e^{-at})
 
 ### 7. Cost Function 
 
 Note: At the end of each epoch we can take the mean of the square (directional) error (**MSE**). The MSE will tell us if we have reached the global minimum and we can tune the hyper-parameters to our liking. Also, the MSE tells us how well the classifier did against the target vector, hence if the classifier made a ton of mistakes it would be more "costly".
-$$
-MSE = \frac{1}{M}\sum_{i=1}^m(t_i - y_1)^2
-$$
+
+![img](https://latex.codecogs.com/svg.latex?MSE%20=%20\frac{1}{M}\sum_{i=1}^m(t_i%20-%20y_1)^2)
+
 To compute the **error rate** on the training/validation/test set, we can just sum up the number of correct classification divided by the size of the dataset. 
 
 
