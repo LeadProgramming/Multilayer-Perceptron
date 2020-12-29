@@ -97,33 +97,33 @@ Note: Delta can also be negative which can decrease the weight change later on.
 We take the non one-hot encoded result from the forward propagation and plug it into this formula.
 
 Note: Since, the one-hot encoded target vector will have an output that has a value of one and the rest of the output neuron will have a value of zero, then there will be a delta that will have a positive value and the rest will have negative values.
-$$
-\delta_i = y_i(1-y_i)(t_i - y_i)
-$$
+
+![img](https://latex.codecogs.com/svg.latex?\delta_i%20=%20y_i(1-y_i)(t_i%20-%20y_i))
+
 Note: the directional error informs us the performance of the classifier. 
-$$
-(t_i - y_i)
-$$
+
+![img](https://latex.codecogs.com/svg.latex?(t_i%20-%20y_i))
+
  The output gradient or the derivative of the SoftMax function will allow us to traverse the gradient and hopefully lands us on the global minima. 
-$$
-y_i(1-y_i)
-$$
+
+![img](https://latex.codecogs.com/svg.latex?y_i(1-y_i))
+
 Note: The global minima is when the error for each delta becomes so small there are barely any weight changes. Now, if you let neural network train a bit more the weight changes will increase thus overshooting the global minima and making more errors!
 
 **Hidden-layer**
 
 Now, we need to compute the deltas for the hidden neurons. 
-$$
-\delta_j = h_j(1-h_j)\sum_i \delta_i w_{ji}
-$$
+
+![img](https://latex.codecogs.com/svg.latex?\delta_j%20=%20h_j(1-h_j)\sum_i%20\delta_i%20w_{ji})
+
 The step is almost the same for the output neurons except we transpose the weight matrix for the output neurons. This step is very important because the dimensions for both the output delta vector and the weight matrix will not match! Python will still perform the dot product regardless of the mismatch in dimensions!
-$$
-(w_{ji})^T
-$$
+
+![img](https://latex.codecogs.com/svg.latex?(w_{ji})^T)
+
 Now, the length of the row of deltas should match with the length of the row of the weights for a single hidden neuron. We can finally perform the dot product for every row in the output weight matrix. 
-$$
-\sum_i \delta_i w_{ji}
-$$
+
+![img](https://latex.codecogs.com/svg.latex?\sum_i%20\delta_i%20w_{ji})
+
 Interestingly, prior to transposing the weight matrix the length of a single row is actually the number of neurons in the hidden layer. This will determine the number of delta we will have for the hidden layer.
 
 Let's not forget that we need to compute the hidden gradient.
