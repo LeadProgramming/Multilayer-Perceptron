@@ -64,7 +64,7 @@ Note: It would be useful if you store the activated values in somewhere in your 
 
 The classified set has eight possible classes which means that the random variable has a multinomial distribution. Thus, the activation function of the **output** layer uses a **SoftMax** regression.
 
-![img](https://latex.codecogs.com/svg.latex?h(x)%20=%20\begin{bmatrix}%20P(y%20=%201%20|%20x;%20w)%20\\%20P(y%20=%202%20|%20x;%20w)%20\\\vdots%20\\P(y%20=%20K%20|%20x;%20w)\end{bmatrix}=\frac{1}{%20\sum_{j=1}^{K}{\exp(w^{(j)\top}%20x%20}}\begin{bmatrix}\exp(w^{(1)\top}%20x%20%20\\\exp(w^{(2)\top}%20x%20 %20\\\vdots%20\\\exp(w^{(K)\top}%20x%20%20\\\end{bmatrix})
+![img](https://latex.codecogs.com/svg.latex?h(x)%20=%20%5Cbegin%7Bbmatrix%7D%20P(y%20=%201%20%7C%20x;%20w)%20%5C%5C%20P(y%20=%202%20%7C%20x;%20w)%20%5C%5C%5Cvdots%20%5C%5CP(y%20=%20K%20%7C%20x;%20w)%5Cend%7Bbmatrix%7D=%5Cfrac%7B1%7D%7B%20%5Csum_%7Bj=1%7D%5E%7BK%7D%7B%5Cexp(w%5E%7B(j)%5Ctop%7D%20x%20%7D%7D%5Cbegin%7Bbmatrix%7D%5Cexp(w%5E%7B(1)%5Ctop%7D%20x%20%20%5C%5C%5Cexp(w%5E%7B(2)%5Ctop%7D%20x%20%20%20%5C%5C%5Cvdots%20%5C%5C%5Cexp(w%5E%7B(K)%5Ctop%7D%20x%20%20%5C%5C%5Cend%7Bbmatrix%7D)
 
 The result of the SoftMax function gives you a probability distribution for 8 possible classes. From there we select the class with the highest probability. 
 
