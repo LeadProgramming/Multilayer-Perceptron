@@ -162,7 +162,7 @@ Now, we want to repeat step 2 to 5 for all training examples which will train ou
 
 Note: At the end of each epoch we can take the mean of the square (directional) error (**MSE**). The MSE will tell us if we have reached the global minimum and we can tune the hyper-parameters to our liking. Also, the MSE tells us how well the classifier did against the target vector, hence if the classifier made a ton of mistakes it would be more "costly".
 
-![img](https://latex.codecogs.com/svg.latex?MSE=\frac{1}{M}\sum_{i=1}^m(t_i-y_i)))
+![img](https://latex.codecogs.com/svg.latex?MSE=\frac{1}{M}\sum_{i=1}^m(t_i-y_i))
 
 To compute the **error rate** on the training/validation/test set, we can just sum up the number of correct classification divided by the size of the dataset. 
 
