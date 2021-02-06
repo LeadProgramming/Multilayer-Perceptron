@@ -72,7 +72,7 @@ Note: Getting the max value's index from the output layer is useful for obtainin
 
 Here is the feed-forward formula which is used for classifying an example.
 
-![feedforwardformula](https://latex.codecogs.com/svg.latex?y_i%20=%20%20f(\sum_j%20w_{ji}f(\sum_k%20w_{kj}x_k)
+![feedforwardformula](https://latex.codecogs.com/svg.latex?y_i=f(\sum_j%20w_{ji}f(\sum_k%20w_{kj}x_k)))
 
 ### 3. Directional Error
 
